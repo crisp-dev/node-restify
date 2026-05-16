@@ -115,7 +115,8 @@
         "vasync": "^2.2.0"
     },
     "optionalDependencies": {
-        "dtrace-provider": "~0.8"
+        "dtrace-provider": "~0.8",
+        "uWebSockets.js": "github:uNetworking/uWebSockets.js#v20.67.0"
     },
     "devDependencies": {
         "autocannon": "^4.0.0",

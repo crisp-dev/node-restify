@@ -4,7 +4,8 @@ var restify = process.argv.includes('version=head')
     ? require('../../lib')
     : require('restify');
 
-var server = restify.createServer();
+var engine = process.env.RESTIFY_ENGINE;
+var server = restify.createServer(engine ? { engine: engine } : {});
 var path = '/whiskeys/scotch/islay/lagavulin/16-years/50';
 var methods = ['post', 'put', 'get', 'del', 'patch'];
 var _ = require('lodash');
@@ -99,8 +100,9 @@ var routes = {
     }
 };
 
-function handler(req, res) {
+function handler(req, res, next) {
     res.send('hello');
+    return next();
 }
 
 function attachRoute(parent, routeConfig) {
